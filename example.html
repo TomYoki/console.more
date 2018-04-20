@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="code/console.js" charset="utf-8"></script>
+    <script src="code/example.js" charset="utf-8"></script>
+    <title>Console.more</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    div {
+      display: block;
+    }
+    .header {
+      font-family: 'Roboto', sans-serif;
+      font-size: 72px;
+      margin-top: 10vh;
+      margin-bottom: 5vh;
+      display: inline-block;
+    }
+    .text {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: lighter;
+    }
+    .gradient {
+      /* From "uigradients.com" */
+      background: #16a085; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #16a085, #f4d03f); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #16a085, #f4d03f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      width: 100%;
+      min-height: 50vh;
+      text-align: center;
+    }
+    /* Container */
+    .container {
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      width: 80%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    /* From Bootstrap V4.0.0 */
+    .hljs {
+      background-color: #f6f8fa !important;
+    }
+    .code-wrapper {
+      border: 1px solid gray;
+      border-radius: 4px;
+      max-width: 40vw;
+      background-color: #f6f8fa;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-top: 50px;
+    }
+    pre {
+      text-align: left !important;
+      display: block;
+      font-size: 87.5%;
+      color: #212529;
+    }
+
+    pre code {
+      font-size: inherit;
+      color: inherit;
+      word-break: normal;
+    }
+
+    code {
+      background-color: #f6f8fa;
+      font-size: 87.5%;
+      color: #e83e8c;
+      word-break: break-word;
+    }
+  </style>
+  <body>
+    <div class="gradient">
+      <span class="header">Example of Console.more</span><br>
+      <span class="text">Command+Option+J</span><br><br>
+      <span class="text">Control+Shift+J</span>
+    </div>
+    <div class="container">
+      <h1>Console.image</h1>
+      <p>console.image will load image,<br>get it's size and log it as if it was text.<br>
+      It takes 1 input and doesn't return anything.<br>
+      On Error, it will log error in console.</p>
+      <div class="code-wrapper">
+        <pre>
+          <code class="js">
+            console.image("https://suchimages.com/notacat.jpg");
+            // This will load and log the image from specified resource.
+          </code>
+        </pre>
+      </div>
+      <h1>Console.style</h1>
+      <p>console.style takes 1 or more objects,<br>
+      which it will remember across files.<br>
+      You can also set such values as "default",<br>
+      which will be used when calling `console.text` without 2nd parameter.<br>
+      If you wish to unset all style values,<br>
+      call `console.style` without any parameters.</p>
+      <div class="code-wrapper">
+        <pre>
+          <code class="js">
+            console.style({
+              // This will act as "default" value for console.text();
+              default: [
+                "color: gray;",
+                "font-size: 15px;"
+              ],
+              // This will be saved in console.more.styles as "underline".
+              underline: [
+                "text-decoration: underline"
+              ]
+            });
+          </code>
+        </pre>
+      </div>
+      <h1>Console.text</h1>
+      <p>Console.text takes 1 or 2 parameters,<br>
+      depending if "default" value is set in `console.style`.<br>
+      It doesn't return any value.
+      </p>
+      <div class="code-wrapper">
+        <pre>
+          <code class="js">
+            console.text("https://google.com/picture_of_a_cat.png", [
+              "color: gray;",
+              "font-size: 72px;"
+            ]);
+            //This will log text with specified properties
+          </code>
+        </pre>
+      </div>
+      <h1>Check for compatibility</h1>
+      <p>console.more.compatible will hold boolean value.</br>
+      It will be true/false,<br>
+      depending if browser supports custom logs.</p>
+      <div class="code-wrapper">
+        <pre>
+          <code class="js">
+            if(console.more.compatible){
+              console.log("I am compatible with this browser!");
+            } else {
+              console.log("Aww :(");
+            }
+          </code>
+        </pre>
+      </div>
+      <h4>For all examples, see code/example.js</br><br>
+      Code highlights by highlight.js</h4>
+    </div>
+  </body>
+</html>
