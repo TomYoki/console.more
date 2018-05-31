@@ -1,25 +1,49 @@
-console._agent = function(){
+"use strict";
+const ver="1.1.0";
+const compatible={
+	"Chrome": true,
+	"Firefox": true,
+	"Opera": false,
+	"Safari": false,
+	"MSIE": false,
+	"Edge": false
+};
+
+const agent = () => {
   let agt = navigator.userAgent;
   if(agt.indexOf("Opera") !== -1){
-    return false;
+    return compatible["Opera"];
   } else if(agt.indexOf("MSIE") !== -1){
-    return false;
+    return compatible["MSIE"];
   } else if(agt.indexOf("Edge") !== -1){
-    return false;
+    return compatible["Edge"];
   } else if(agt.indexOf("Chrome") !== -1){
-    return true;
+    return compatible["Chrome"];
   } else if(agt.indexOf("Safari") !== -1){
-    return false;
+    return compatible["Safari"];
   } else if(agt.indexOf("Firefox") !== -1){
-    return true;
+    return compatible["Firefox"];
   } else {
     return false;
   }
 }
 
+let render = (src, callback) => {
+  if(!src){
+    callback("Missing parameters");
+    return;
+  }
+  let img = new Image();
+  img.src = src;
+  img.onload = function() {
+    callback(null, {width: this.height, height: this.height});
+  }
+}
+
+
 console.more = {
-  compatible: console._agent() ? true : false,
-  version: "1.0.0",
+  compatible: agent() ? true : false,
+  version: ver,
   styles: {}
 }
 
@@ -49,7 +73,7 @@ console.image = function(src){
   if(!src){
     throw "Missing source.";
   }
-  this._render(src, (err, dimensions) => {
+  render(src, (err, dimensions) => {
     let size = dimensions.width > dimensions.height ? dimensions.width : dimensions.height;
     let style = [
       "font-size:"+size+"px;",
@@ -59,16 +83,4 @@ console.image = function(src){
     console.log("%c           ",style.join(""));
     return;
   });
-}
-
-console._render = function(src, callback){
-  if(!src){
-    callback("Missing parameters");
-    return;
-  }
-  let img = new Image();
-  img.src = src;
-  img.onload = function() {
-    callback(null, {width: this.height, height: this.height});
-  }
 }
