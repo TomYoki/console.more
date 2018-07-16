@@ -15,20 +15,20 @@ It takes 1 input and doesn't return anything.<br>
 On Error, it will log error in console.
 
 
-Console.style();
+Console.styles();
 ----
-console.style takes 1 or more objects,<br>
+console.styles takes 1 or more objects,<br>
 which it will remember across files.<br>
 You can also set such values as "default",<br>
 which will be used when calling `console.text()` without 2nd parameter.<br>
 If you wish to unset all style values,<br>
-call `console.style()` without any parameters.
+call `console.styles()` without any parameters.
 
 
 Console.text();
 ----
 Console.text takes 1 or 2 parameters,<br>
-depending if "default" value is set in `console.style()`.<br>
+depending if "default" value is set in `console.styles()`.<br>
 It doesn't return any value.
 
 
