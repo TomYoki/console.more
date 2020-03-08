@@ -3,7 +3,7 @@ Lightweight tool that lets you log images &amp; custom text.<br>
 This code is very basic, and should only be used as an example/backbone.
 
 # Web Docs
-For prettier documentation go [here.](https://tomyoki.github.io/console.more/)
+For prettier documentation go [here.](https://tomburgs.github.io/console.more/)
 
 # Functions
 
